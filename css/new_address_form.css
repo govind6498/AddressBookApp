@@ -78,3 +78,95 @@ body{
     text-transform: uppercase;
     opacity: 1;
 } 
+
+/* USE CASE 3 */
+.form-constrains{
+    margin: 1% 25%;
+    display: flex;
+    flex-flow: column wrap;
+    width:50%;
+}
+.row-content{
+    margin-left: 30px;
+    min-width: 80%;
+    min-height: 80%;
+    max-width: 100%;
+    /* padding-left: 20px; */
+}
+label{
+    display: inline-block;
+    margin-top:20px;
+}
+
+.text{
+    text-align:left;
+    font:normal normal normal 18px/5px Roboto;
+    letter-spacing: 0px;
+    color: #42515f;
+    opacity: 1;
+}
+.input{
+    width:100%;
+    height: 40px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius:3px;
+    opacity: 1;
+    resize: horizontal;
+    padding: 16 px 12 px;
+}
+textarea{
+    height: 20%;
+    width:100%;
+    resize:none;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
+    letter-spacing: -1px;
+    opacity: 1;
+    padding-bottom:60px;
+    padding-left: 10px;
+    padding-top:10px;
+}
+
+.column-constrains{
+    display: flex;
+    flex-flow: row wrap;
+    padding-top:19px;
+    
+}
+.column-content{
+flex:2
+}
+
+select{
+    padding:7px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
+    text-align:left;
+    font:normal normal normal 18px/24px Roboto;
+    letter-spacing: 0px;
+    color: #42515f;
+    opacity: 1;
+    width: 90%;
+}
+
+.zipcode{
+    padding:15px 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
