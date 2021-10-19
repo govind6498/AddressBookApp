@@ -56,7 +56,59 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 });
-const setTextValue = (id,value)=>{
-    const element = document.querySelector(id)
-    element.textContent = value;
+function save(){
+    let contact = new Contact();
+    contact.id = new Date().getTime();
+
+    try{
+        contact.name = getInputValueById("#name");
+    }
+    catch(error){
+        setTextValue(".name.arror",error);
+        throw error;
+    }
+
+    try{
+        contact.phoneNumber = getInputValueById("#phoneNumber");
+    }
+    catch(error){
+        setTextValue(".tel-error",error);
+        throw error;
+    }
+    try{
+        contact.address =getInputValueById("address");
+    }
+    catch(error){
+        setTextValue(".address-error",error);
+        throw error;
+    }
+    let city =getInputValueById("#city");
+    if(city!="Select City"){
+        contact.city = city;
+    }
+    else{
+        throw "Please Select city";
+    }
+
+    let state =getInputValueById("#state");
+    if(state!="Select State"){
+        contact.state = state;
+    }
+    else{
+        throw "Please Select state";
+    }
+
+    try{
+        contact.zip = getInputValueById("#zip");
+    }
+    catch(error){
+        setTextValue(".zip-error",error);
+        throw error;
+    }
+    console.log(contact.toString())
+}
+
+function getInputValueById(property){
+    let value = document.querySelector(property).value
+    return value;
 }
