@@ -1,18 +1,27 @@
 window.addEventListener("DOMContentLoaded", (event) => {
+    validateName()
+    validatePhoneNumber()
+    validateAddress()
+    validateZipcode()
+   
+});
+const validateName=()=>{
     const name = document.querySelector("#name");
-    name.addEventListener("input", function () {
-        if (name.value.length == 0) {
-            setTextValue(".name.error", "");
+    name.addEventListener("input",function(){
+        if(name.value.length ===0){
+            setTextValue(".name-error","")
             return;
         }
-        try {
+        try{
             new Contact().name = name.value;
-            setTextValue(".name-error", "");
+            setTextValue(".name-error","");
         }
-        catch (error) {
-            setTextValue(".name-error", error)
+        catch(error){
+            setTextValue(".name-error",error)
         }
     });
+}
+const validatePhoneNumber=()=>{
     const phoneNumber = document.querySelector("#phoneNumber");
     phoneNumber.addEventListener("input", function () {
         if (phoneNumber.value.length == 0) {
@@ -27,6 +36,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             setTextValue(".tel-error", error)
         }
     });
+}
+const validateAddress=()=>{
     const address = document.querySelector("#address");
     address.addEventListener("input", function () {
         if (address.value.length == 0) {
@@ -41,6 +52,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             setTextValue(".address-error", error)
         }
     });
+}
+const validateZipcode=()=>{
     const zip = document.querySelector("#zip");
     zip.addEventListener("input", function () {
         if (zip.value.length == 0) {
@@ -55,7 +68,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             setTextValue(".zip-error", error)
         }
     });
-});
+}
 function save(){
     let contact = new Contact();
     contact.id = new Date().getTime();
@@ -106,6 +119,10 @@ function save(){
         throw error;
     }
     console.log(contact.toString())
+}
+const setTextValue = (id,value)=>{
+    const element = document.querySelector(id)
+    element.textContent = value;
 }
 
 function getInputValueById(property){
