@@ -20,7 +20,7 @@ const validateName=()=>{
             setTextValue(".name-error",error)
         }
     });
-}
+};
 const validatePhoneNumber=()=>{
     const phoneNumber = document.querySelector("#phoneNumber");
     phoneNumber.addEventListener("input", function () {
@@ -36,7 +36,7 @@ const validatePhoneNumber=()=>{
             setTextValue(".tel-error", error)
         }
     });
-}
+};
 const validateAddress=()=>{
     const address = document.querySelector("#address");
     address.addEventListener("input", function () {
@@ -52,7 +52,7 @@ const validateAddress=()=>{
             setTextValue(".address-error", error)
         }
     });
-}
+};
 const validateZipcode=()=>{
     const zip = document.querySelector("#zip");
     zip.addEventListener("input", function () {
@@ -68,57 +68,77 @@ const validateZipcode=()=>{
             setTextValue(".zip-error", error)
         }
     });
+};
+const save=()=>{
+    try{
+        let contact = createContact();
+        createAndUpdateStorage();
+    }
+    catch(error){
+        alert(error)
+    }
+};
+const createAndUpdateStorage=(contact)=>{
+    let contactList = JSON.parse(localStorage.getItem("ContactList"));
+    if(contactList!=undefined){
+        contactList.push(contact);
+    }
+    else{
+        contactList=[contact];
+    }
+    alert(contact.toString());
+    alert("Contact Added Succesfully");
+    localStorage.setItem("ContactList",JSON.stringify(contactList));
 }
-function save(){
+const createContact=()=>{
     let contact = new Contact();
     contact.id = new Date().getTime();
-
     try{
-        contact.name = getInputValueById("#name");
+        contact.name = getInputValueById("#name")
     }
     catch(error){
-        setTextValue(".name.arror",error);
+        setTextValue(".name-error",error)
+        throw error;
+    }
+    try{
+        contact.phoneNumber = getInputValueById("#phoneNumber")
+    }
+    catch(error){
+        setTextValue(".tel-error",error)
+            throw error;
+    }
+    try{
+        contact.address = getInputValueById("#address");
+    }
+    catch(error){
+        setTextValue(".address.error",error);
         throw error;
     }
 
-    try{
-        contact.phoneNumber = getInputValueById("#phoneNumber");
-    }
-    catch(error){
-        setTextValue(".tel-error",error);
-        throw error;
-    }
-    try{
-        contact.address =getInputValueById("address");
-    }
-    catch(error){
-        setTextValue(".address-error",error);
-        throw error;
-    }
-    let city =getInputValueById("#city");
+    let city = getInputValueById("#city");
     if(city!="Select City"){
         contact.city = city;
     }
     else{
-        throw "Please Select city";
+        throw "Please Select city"
     }
 
-    let state =getInputValueById("#state");
-    if(state!="Select State"){
+    let state = getInputValueById("#state");
+    if(state!="Select state"){
         contact.state = state;
     }
     else{
-        throw "Please Select state";
+        throw "Please select state"
     }
-
     try{
-        contact.zip = getInputValueById("#zip");
+        contact.zip= getInputValueById("#zip")
     }
     catch(error){
-        setTextValue(".zip-error",error);
+        setTextValue(".zip-error",error)
         throw error;
     }
-    console.log(contact.toString())
+    alert(contact.toString())
+    return contact;
 }
 const setTextValue = (id,value)=>{
     const element = document.querySelector(id)
