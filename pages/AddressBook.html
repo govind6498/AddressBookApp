@@ -48,6 +48,7 @@
         <div class="row-content">
             <label for="address" class="label text">Address</label><br>
             <textarea name="address" id="address" placeholder="Enter Address" required></textarea>
+            <error-output class="address-error"></error-output>
         </div>
         <div class="row-content">
             <div class="column-constrains">
@@ -148,8 +149,15 @@
                     <error-output class="zip-error"></error-output>
                 </div>
             </div>
+            <!-- USE CASE 4 -->
+            <div class="button-contact">
+                <button type="submit" class="button button-submit" id="submitButton">Add</button>
+                <button type="reset" class="button button-reset" id="resetButton">Reset</button>
+            </div>
         </div>
     </div>
+    <script defer src="../js/address_book_form.js"></script>
+    <script defer src="../js/Contact_data.js"></script>
 </body>
 
 </html>
