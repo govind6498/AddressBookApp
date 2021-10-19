@@ -1,70 +1,69 @@
-class Contact{
-    get id(){
+class Contact {
+    get id() {
         return this._id;
     }
-    set id(id){
+    set id(id) {
         this._id = id;
     }
 
-    get name(){
+    get name() {
         return this._name;
     }
-    set name(name){
+    set name(name) {
         const nameRegex = RegExp("^[A-Z][a-zA-Z]{2,}(\\s{1}[A-Z][a-zA-Z]*)*$");
-        if(nameRegex.test(name)){
+        if (nameRegex.test(name)) {
             this._name = name;
         }
         else {
             throw "Name is Invalid";
         }
     }
-    get phoneNumber(){
+    get phoneNumber() {
         return this._phoneNumber;
     }
-    set phoneNumber(phoneNumber){
+    set phoneNumber(phoneNumber) {
         const phoneNumberRegex = RegExp("^([+]?([0-9]{2}\\s{1})?[7-9]{1}[0-9]{9})$");
-        if(phoneNumberRegex.test(phoneNumber)){
+        if (phoneNumberRegex.test(phoneNumber)) {
             this._phoneNumber = phoneNumber
         }
         else {
             throw " Phone Number is Invalid"
         }
     }
-    get address(){
+    get address() {
         return this._address;
     }
-    set address(address){
-        const addressRegex = RegExp('^([a-zA-Z0-9-:#$]{3,}\\s{0,1})+$');
-        if(addressRegex.test(address)){
+    set address(address) {
+        const addressRegex = RegExp('^([a-zA-Z0-9-:#$+*,;.]{3,}\\s{0,1})+$');
+        if (addressRegex.test(address)) {
             this._address = address;
         }
-        else{
+        else {
             throw "Address is Invalid";
         }
     }
-    get city(){
+    get city() {
         return this._city;
     }
-    set city(city){
+    set city(city) {
         this._city = city;
     }
-    get state(){
+    get state() {
         return this._state = state;
     }
-    get zip(){
+    get zip() {
         return this._zip
     }
-    set zip(zip){
+    set zip(zip) {
         const zipRegex = RegExp("^[0-9]{6}$");
-        if(zipRegex.test(zip)){
+        if (zipRegex.test(zip)) {
             this._zip = zip
         }
-        else{
+        else {
             throw "Zip is Invalid";
         }
     }
-    toString(){
-        // return `id ${this.id} \nName ${this.name} \nPhone Number ${this.phoneNumber} \nAddress ${this.address} \nCity ${this.city} \nState ${this.state} \nZip  ${this.zip}`;
-        return "id="+this.id+" Name="+this.name+" Phone Number="+this.phoneNumber+" Address="+this.address+" City="+this.city+" State="+this.state+" zip="+this.zip;
+    toString() {
+        return `id: ${this.id} \nName: ${this.name} \nPhone Number: ${this.phoneNumber} \nAddress: ${this.address} \nCity: ${this.city} \nState: ${this.state} \nZip:  ${this.zip}`;
     }
 }
