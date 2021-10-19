@@ -1,3 +1,4 @@
+/* USE CASE 1 */
 *{
     box-sizing: border-box;
 }
@@ -39,3 +40,41 @@ body{
 .logo-content-img{
     border: solid 0px #42515f;
 }
+
+/* USE CASE 2 */
+
+.form-content{
+    min-height: calc(100%-80px);
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid green;
+}
+.form{
+    background: #ffffff 0% 0% no-repeat padding-box;
+    min-width: 800px;
+    margin: 2%;
+    box-shadow: 0px 3px 6px #00000029;
+    border:0px solid #f5f5f5;
+    border-radius: 8px;
+    opacity: 1;
+}
+.form-head{
+    display: flex;
+    background: #008cff 0% 0% no-repeat padding-box;
+    border-radius: 8px 8px 0px 0px;
+    opacity: 1;
+    padding: 30px;
+ }
+.form-head-text{
+    flex:6;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    font: normal normal 28px/37px Roboto;
+    letter-spacing: 0px;
+    color: #ffffff;
+    text-transform: uppercase;
+    opacity: 1;
+} 
