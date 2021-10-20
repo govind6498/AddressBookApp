@@ -49,7 +49,10 @@ class Contact {
         this._city = city;
     }
     get state() {
-        return this._state = state;
+        return this._state;
+    }
+    set state(state) {
+         this._state=state;
     }
     get zip() {
         return this._zip
@@ -64,6 +67,6 @@ class Contact {
         }
     }
     toString() {
-        return `id: ${this.id} \nName: ${this.name} \nPhone Number: ${this.phoneNumber} \nAddress: ${this.address} \nCity: ${this.city} \nState: ${this.state} \nZip:  ${this.zip}`;
+        return `id: ${this.id} \nName: ${this._name} \nPhone Number: ${this._phoneNumber} \nAddress: ${this._address} \nCity: ${this._city} \nState: ${this._state} \nZip:  ${this._zip}`;
     }
 }
