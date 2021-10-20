@@ -1,13 +1,13 @@
-// USE CASE 5
 let contactList;
 window.addEventListener("DOMContentLoaded", (event) => {
-    contactList = getContactFormLocalStorage();
+    contactList =getAddressBookDataFromStorage();
     document.querySelector(".contact-count").textContent = contactList.length;
     createinnerHtml();
-    
+    localStorage("edit")
 });
-const getContactFormLocalStorage=()=>{
-    return localStorage.getItem("ContactList")?JSON.parse(localStorage.getItem("ContactList")):[];
+const getAddressBookDataFromStorage=()=>{
+    return localStorage.getItem("ContactList")?
+                        JSON.parse(localStorage.getItem("ContactList")):[];
 }
 const createinnerHtml = () => {
     if (contactList.length == 0) {
@@ -34,23 +34,32 @@ const createinnerHtml = () => {
             <td>${contact._phoneNumber}</td>
             <td>
                 <img src="../assets/delete.svg" alt="delete" id="${contact._id}" onclick="remove(this)">
-                <img src="../assets/edit.svg" alt="update" id="${contact._id}" onclick="update(this)"></td>
+                    <img src="../assets/edit.svg" alt="update" id="${contact._id}" onclick="update(this)">
+                    </td>
                 </tr>`;
     }
     document.querySelector("#table-display").innerHTML = innerHtml;
 };
-
 const remove=(node)=>{
-   let removeContact = contactList.find(contact=>contact._id == node.id);
-   if(!removeContact){
-       return;
-   }
-   const index = contactList
-                    .map(contact=>contact._id)
-                    .indexOf(removeContact._id)
-   contactList.splice(index,1)
-   localStorage.setItem("ContactList",JSON.stringify(contactList));
-   document.querySelector(".contact-count").textContent = contactList.length;
-   createinnerHtml();
-//    window.location.replace("../pages/address_book_home.html");
-}
+    let removeContact = contactList.find(contact=>contact._id == node.id);
+    if(!removeContact){
+        return;
+    }
+    const index = contactList
+                     .map(contact=>contact._id)
+                     .indexOf(removeContact._id)
+    contactList.splice(index,1)
+    localStorage.setItem("ContactList",JSON.stringify(contactList));
+    document.querySelector(".contact-count").textContent = contactList.length;
+    createinnerHtml();
+ }
+
+ const update = (node) => {
+    let contactToEdit = contactList.find(editContact => editContact._id == node.id);
+    if (!contactToEdit) {
+      return;
+    }
+    localStorage.setItem('contactEdit', JSON.stringify(contactToEdit));
+    window.location.replace(site_properties.add_contacts_page);
+  } 
+  
