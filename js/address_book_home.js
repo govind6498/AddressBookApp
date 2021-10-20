@@ -1,6 +1,8 @@
+let contactList;
 window.addEventListener("DOMContentLoaded", (event) => {
     document.querySelector(".contact-count").textContent = contactList.length;
     createinnerHtml();
+    contactList = getContactFormLocalStorage();
 });
 const createinnerHtml = () => {
     if (contactList.length == 0) {
@@ -33,32 +35,6 @@ const createinnerHtml = () => {
     }
     document.querySelector("#table-display").innerHTML = innerHtml;
 };
-let contactList = [
-    {
-        _id: 1,
-        _name: "Amit Kumar",
-        _phoneNumber: "+91 9768459365",
-        _address: "Rajiv Choak",
-        _city: "New Delhi",
-        _state: "Delhi",
-        _zip: "110092",
-      },
-      {
-        _id: 2,
-        _name: "Raushan Kumar",
-        _phoneNumber: "91 9771082390",
-        _address: "Goh",
-        _city: "Aurangbad",
-        _state: "Bihar",
-        _zip: "457684",
-      },
-      {
-        _id: 3,
-        _name: "Govind Singh",
-        _phoneNumber: "9798364309",
-        _address: "Ferozepur",
-        _city: "Ferozepur",
-        _state: "Punjab",
-        _zip: "152004",
-      },
-];
+const getContactFormLocalStorage=()=>{
+    return localStorage.getItem("ContactList")?JSON.parse(localStorage.getItem("ContactList")):[];
+}
